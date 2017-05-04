@@ -1,0 +1,32 @@
+{
+  "name": "openwhisk-expressjs",
+  "version": "0.0.1",
+  "description": "OpenWhisk wrapper around express application",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lionelvillard/openwhisk-expressjs.git"
+  },
+  "keywords": [
+    "openwhisk",
+    "express",
+    "deploy",
+    "node"
+  ],
+  "author": "Lionel Villard",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/lionelvillard/openwhisk-expressjs/issues"
+  },
+  "homepage": "https://github.com/lionelvillard/openwhisk-expressjs#readme",
+  "dependencies": {
+    "supertest": "^3.0.0"
+  },
+  "devDependencies": {
+    "express": "^4.15.2",
+    "mocha": "^3.3.0"
+  }
+}
