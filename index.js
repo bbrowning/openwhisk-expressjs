@@ -19,20 +19,19 @@ const request = require('supertest');
 /*
   OpenWhisk web action redirecting requests to Express
 
-  @param {object} app                Express app
+  @param {object} app             Express app
 
-  @param {string} args.baseurl       HTML base url for resolving relative URLs
-  @param {string} args.staticbaseurl HTML base url for resolving static assets relative URLs
+  @param {object} args                    OpenWhisk Web action request
+  @param {object} [args.express_locals]   Values to add to Express locals
 
 */
 module.exports = exports = (app) => (args) => {
   return new Promise((resolve, reject) => {
 
-    // Set baseurl and staticbaseurl so that templates can you them
-    app.locals.baseurl = args.baseurl;
-
-    if (args.staticbaseurl)
-      app.locals.staticbaseurl = args.staticbaseurl;
+    if (args.express_locals) {
+      app.locals = Object.assign(app.locals, args.express_locals);
+      delete args.express_locals;
+    }
 
     // Create mock request based on the original request.
     let req = request(app)[args.__ow_method](args.__ow_path);
