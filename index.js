@@ -54,7 +54,6 @@ module.exports = exports = (app) => (args) => {
 
       let contentType = res.headers['content-type'] || 'text/plain';
       contentType = contentType.split(';')[0];
-      console.log(contentType);
       if (isBinary(contentType))
         body = new Buffer(body).toString('base64');
 
@@ -142,5 +141,9 @@ const mediaTypes = {
 }
 
 function isBinary(contentType) {
+  if (contentType.startsWith('text/') || contentType.startsWith('message/'))
+    return false;
+  if (contentType.startsWith('audio/') || contentType.startsWith('image/') || contentType.startsWith('video/'))
+    return true;
   return mediaTypes[contentType];
 }
