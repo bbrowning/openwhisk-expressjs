@@ -12,4 +12,6 @@ const forward = require('openwhisk-expressjs')(app);
 function main(args) {
   return forward(args);
 }
+
+exports.main = main;
 ```
