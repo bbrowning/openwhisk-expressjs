@@ -46,7 +46,7 @@ module.exports = exports = (app) => (args) => {
             req = req.send(args.__ow_body);
         }
 
-        req.action_params = args;
+        app.action_params = args;
 
         req.end((err, res) => {
             if (err)
@@ -67,13 +67,6 @@ module.exports = exports = (app) => (args) => {
                 statusCode: res.status,
                 headers: res.headers,
                 body: body
-            });
-        });
-
-        req.on('error', e => {
-            return resolve({
-                statusCode: 500,
-                body: JSON.stringify(e)
             });
         });
     });
