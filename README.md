@@ -9,7 +9,9 @@ The basic usage is:
 const app = require('./server');
 const forward = require('openwhisk-expressjs')(app);
 
-function main(args) {
-  return forward(args);
+function main(request) {
+  return forward(request);
 }
+
+exports.main = main;
 ```
